@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fitness Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Fitness Dashboard</h1>
+    <button onclick="toggleDarkMode()" style="position: absolute; top: 20px; left: 20px;">🌙 Dark Mode</button>
+    <button onclick="toggleMusic()" style="position: absolute; top: 20px; left: 150px;">🎵 Music</button>
+    <button onclick="logout()" style="position: absolute; top: 20px; right: 20px;">Logout</button>
+    
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_4a8f1d6b27.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="dashboard">
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Today's Progress</h3>
+                <p>Steps: <span id="todaySteps">0</span></p>
+                <p>Workout: <span id="todayWorkout">0</span> min</p>
+                <p>Calories: <span id="todayCalories">0</span></p>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Weekly Total</h3>
+                <p>Steps: <span id="weekSteps">0</span></p>
+                <p>Workout: <span id="weekWorkout">0</span> min</p>
+                <p>Calories: <span id="weekCalories">0</span></p>
+            </div>
+            
+            <div class="stat-card">
+                <h3 id="goalStatus">0/2 Goals<br>✅ Achieved</h3>
+            </div>
+        </div>
+        
+        <div class="progress">
+            <div class="progress-item">
+                <label>Daily Steps Goal (10,000)</label>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="stepsBar" style="width: 0%"></div>
+                </div>
+            </div>
+            
+            <div class="progress-item">
+                <label>Daily Workout Goal (30 min)</label>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="workoutBar" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-section">
+        <h2>Add Today's Data</h2>
+        <input type="number" id="steps" placeholder="Steps">
+        <input type="number" id="workout" placeholder="Workout (min)">
+        <input type="number" id="calories" placeholder="Calories">
+        <button onclick="addData()">Add Data</button>
+    </div>
+    
+    <div class="dashboard">
+        <h2>💧 Water Intake Tracker</h2>
+        <div class="water-tracker">
+            <p>Daily Goal: 8 glasses (2000ml)</p>
+            <div class="water-counter">
+                <span id="waterCount">0</span> glasses
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="waterBar" style="width: 0%"></div>
+            </div>
+            <div style="margin-top: 15px;">
+                <button onclick="addWater()">+ Add Glass</button>
+                <button onclick="resetWater()">Reset</button>
+            </div>
+        </div>
+    </div>
+    
+    <h2>Daily Reminder</h2>
+    <div id="reminder">Track your fitness data to see progress!</div>
+    
+    <h2>Motivational Quote</h2>
+    <div id="quote">Stay motivated!</div>
+    <div style="margin-top: 10px;">
+        <button onclick="newQuote()">New Quote</button>
+        <button onclick="saveQuote()">❤️ Save</button>
+        <button onclick="shareWhatsApp()">📲 WhatsApp</button>
+        <button onclick="copyQuote()">📋 Copy</button>
+        <button onclick="downloadQuote()">📥 Download</button>
+    </div>
+    
+    <h2>Favorite Quotes</h2>
+    <div class="dashboard">
+        <ul id="favoriteQuotes" style="list-style: none; padding: 0;"></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

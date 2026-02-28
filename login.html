@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Fitness Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 100px auto;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .login-container h2 { color: #667eea; margin-top: 0; }
+        .login-container input { width: 80%; display: block; margin: 15px auto; }
+        .login-container button { width: 90%; margin: 20px auto; display: block; }
+        .error { color: red; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h1>Fitness Tracker</h1>
+    
+    <div class="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <p class="error" id="error"></p>
+        <button onclick="login()">Login</button>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            if (username && password) {
+                localStorage.setItem('loggedIn', 'true');
+                localStorage.setItem('username', username);
+                window.location.href = 'index.html';
+            } else {
+                document.getElementById("error").textContent = "Please enter username and password";
+            }
+        }
+    </script>
+</body>
+</html>
