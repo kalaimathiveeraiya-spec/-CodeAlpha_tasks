@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Quotes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align:center;color:#333;margin-bottom:20px;">Saved Quotes</h2>
+        <button onclick="window.location.href='index.html'" style="margin-bottom:20px;">Back</button>
+        <div id="saved-quotes-container"></div>
+    </div>
+    <script>
+        const savedQuotes = JSON.parse(localStorage.getItem('savedQuotes')) || [];
+        const container = document.getElementById('saved-quotes-container');
+        
+        if (savedQuotes.length === 0) {
+            container.innerHTML = '<p style="text-align:center;">No saved quotes yet.</p>';
+        } else {
+            savedQuotes.forEach(quote => {
+                const quoteDiv = document.createElement('div');
+                quoteDiv.className = 'quote-card';
+                quoteDiv.style.marginBottom = '20px';
+                quoteDiv.innerHTML = `
+                    <div class="quote-text">${quote.text}</div>
+                    <div class="quote-author">${quote.author}</div>
+                `;
+                container.appendChild(quoteDiv);
+            });
+        }
+    </script>
+</body>
+</html>
